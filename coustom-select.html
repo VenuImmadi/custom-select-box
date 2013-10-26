@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Custom Select Box with Css and JQuery</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<style>
+	
+#select-btn1 {
+    
+    width: 400px;
+	position:relative;
+	margin:o auto;
+}
+	#select-btn1 select {
+    display: none;
+}
+
+#select-btn1 .custom-select {
+    color: #F0F0F0 !important;
+    font-weight: bold;
+    height: 37px;
+    padding-left: 5px;
+    position: relative;
+    width: 100%;
+}
+	#select-btn1 .custom-select .open {
+    background: url("bu-sel.png") no-repeat scroll right top #7DACDD;
+    color: #FFFFFF;
+    display: block;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: normal;
+    height: 37px;
+    line-height: 37px;
+    padding-left: 10px;
+    padding-right: 27px;
+    width: 92.5%;
+}
+
+		#select-btn1 .custom-select ul {
+    background-color: #B8B8B8;
+    border: 1px solid #E9E9E9;
+    color: #F0F0F0;
+    display: none;
+    left: 5px;
+    margin-top: 0;
+    max-height: 120px;
+    overflow: auto;
+    padding: 0;
+    position: absolute;
+    top: 37px;
+    width: 359px;
+    z-index: 1;
+}
+#select-btn1 .custom-select ul li {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+    padding: 5px 0;
+    text-indent: 6px;
+    width: 100%;
+}
+	</style>
+	</head>
+	<body>
+	<h1>Coustom Select box with Css and JQuery</h1>
+	<p>how to find about how it build Visit <a href="http://www.pointmycode.com/">Point My Code - maxzine</a></p>
+<div id="select-btn1">
+
+<select name="departamento" value=""></select>
+	<div class="custom-select">
+		<a href="javascript:void(0);" class="open">Departamento</a>
+		<ul class="options" style="display: none;">
+			<li data-value="01">01</li>
+			<li data-value="02">02</li>
+			<li data-value="03">03</li>
+			<li data-value="04">04</li>
+			<li data-value="05">05</li>
+			<li data-value="06">06</li>
+		</ul>
+	</div>
+</div>
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script >
+		
+	function customSelect(){
+	$('.custom-select a.open').on('click', function () {
+		if ( $(this).next().hasClass('active') ) {
+			$(this).next().removeClass('active').slideUp(250);
+		}
+		else{
+			$(this).next().addClass('active').slideDown(250);
+		}
+	});
+
+	$('.custom-select ul.options li').on('click', function () {
+		var value = $(this).data('value');		
+		$(this).parent().removeClass('active').slideUp(250);
+		$(this).parent().parent().prev().attr('value', value);
+		$(this).parent().prev().text(value);
+	});
+}
+	customSelect();
+	</script>
+	
+	
+  </body>
+</html>
